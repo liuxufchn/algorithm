@@ -3,11 +3,17 @@ package org.example.entity;
 import lombok.Data;
 
 @Data
-public class Student {
+public class Student implements Comparable<Student> {
     private String name;
+    private Integer score;
 
     public Student(String name) {
         this.name = name;
+    }
+
+    public Student(String name, Integer score) {
+        this.name = name;
+        this.score = score;
     }
 
     @Override
@@ -23,5 +29,9 @@ public class Student {
         }
         Student other = (Student) obj;
         return other.getName().equalsIgnoreCase(this.name);
+    }
+
+    public int compareTo(Student student) {
+        return this.score - student.score;
     }
 }
